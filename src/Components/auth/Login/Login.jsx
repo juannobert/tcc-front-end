@@ -1,10 +1,13 @@
 import React from 'react';
 import Input from '../../Forms/Input';
 import Button from '../../Forms/Button';
+import useForm from '../../../Hooks/useForm';
 import { AiOutlineUser, AiFillUnlock } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
-function login() {
+function Login() {
+  const email = useForm('email');
+  const senha = useForm(true);
   return (
     <div className="col">
       <div className="container bg-white container-form">
@@ -17,10 +20,10 @@ function login() {
           </div>
         </div>
         <form>
-          <Input placeholder="Email" type="text" name="email">
+          <Input placeholder="Email" type="text" name="email" {...email}>
             <AiOutlineUser />
           </Input>
-          <Input placeholder="Senha" type="text" name="password">
+          <Input placeholder="Senha" type="text" name="password" {...senha}>
             <AiFillUnlock />
           </Input>
           <div className="row text-end">
@@ -43,4 +46,4 @@ function login() {
   );
 }
 
-export default login;
+export default Login;

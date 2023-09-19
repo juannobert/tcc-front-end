@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Input({ type, name, label, children, ...props }) {
+function Input({ type, name, children, onChange, onBlur, error }) {
   return (
     <>
       <div className="form-group">
@@ -10,8 +10,10 @@ function Input({ type, name, label, children, ...props }) {
           id={name}
           name={name}
           type={type}
-          {...props}
+          onChange={onChange}
+          onBlur={onBlur}
         />
+        <p className={error && 'text-danger'}>{error}</p>
       </div>
     </>
   );
