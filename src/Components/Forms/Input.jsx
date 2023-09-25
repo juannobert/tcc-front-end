@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Input({ type, name, children, onChange, onBlur, error }) {
+function Input({ type, name, children, onChange, onBlur, error, placeholder }) {
   return (
     <>
       <div className="form-group">
@@ -9,6 +9,7 @@ function Input({ type, name, children, onChange, onBlur, error }) {
           className="form-control input-bg mb-2"
           id={name}
           name={name}
+          placeholder={placeholder}
           type={type}
           onChange={onChange}
           onBlur={onBlur}
