@@ -1,6 +1,231 @@
+
+*{
+  box-sizing: border-box;
+}
 .primary-color{
   color:  #ff444c;;
 }
 a{
   text-decoration: none;
+}
+.header{
+  background-color: #ff444c;
+  padding: 10px 2%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo{
+  margin-top: 8px;
+}
+
+.logo h3{
+  cursor: pointer;
+}
+
+.logo h3:hover{
+  opacity: 0.7;
+}
+
+.icons-header svg{
+  cursor: pointer;
+}
+
+.icons-header svg:hover{
+  opacity: 0.7;
+}
+
+.info-header{
+  color: white;
+  display: flex;
+}
+
+.info-header img{
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin:0 8px;
+}
+
+.info-header svg{
+  margin:0 10px;
+}
+
+.icons-header{
+  margin-left: 10px;
+  margin-top: 9px;
+}
+
+.main{
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+}
+
+.sidebar{
+  width: 20%;
+  background-color: white;
+  height: 100vh;
+}
+
+.sidebar a.sidebar-active{
+  border-left: 4px solid #ff444c;
+  background-color: rgb(245, 245,245);
+  color: #777;
+  font-weight: bold;
+}
+
+.sidebar a.sidebar-active > svg{
+  color: #777;
+}
+
+.sidebar h3{
+  color: #333;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.sidebar a{
+  display: block;
+  text-decoration: none;
+  padding: 10px 15px;
+  color: #444;
+}
+
+.sidebar a:hover{
+  border-left: 4px solid #ff444c;
+  background-color: rgb(245, 245,245);
+  color: #777;
+  font-weight: bold;
+}
+
+.sidebar a:hover .sidebar a > svg{
+  color: #777;
+}
+
+.sidebar a > svg{
+  color: #444;
+}
+
+.content{
+  width: 80%;
+  background-color: rgb(245, 245,245); 
+  padding: 20px;
+}
+
+.titulo-secao{
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+}
+
+.titulo-secao h2{
+  font-size: 19px;
+
+}
+
+.titulo-secao p{
+  font-size: 14px;
+}
+
+.titulo-secao svg{
+  color: #ff444c;
+}
+
+.separador{
+  width: 100%;
+  height: 3px;
+  background-color: rgb(240,240,240);
+}
+
+.box-info{
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-info-single{
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  color: white;
+  width: 100%;
+  margin: 0 20px;
+  padding: 30px;
+}
+
+.box-info-single svg{
+  font-size: 28px;
+}
+
+.box-info-single p{
+  font-size: 20px;
+}
+
+.feed{
+  margin: 20px 0;
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  padding: 30px;
+}
+
+.feed-single{
+  display: flex;
+  justify-content: space-between;
+}
+
+.feed-text{
+  display: flex;
+}
+
+.feed-text span{
+  color: black;
+  display: inline-block;
+  margin: 8px;
+}
+
+.feed-text .circle-icon{
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: rgb(240,240,240);
+  position: relative;
+}
+
+.feed-text svg{
+  font-size: 18px;
+  color: #ff444c;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.feed-time{
+  color: #444;
+}
+
+.imagem-perfil{
+  float: right;
+  text-align: center;
+  margin-top: 30px;
+  margin-right: 230px;
+  margin-top: 140px;
+}
+
+.imagem-perfil h3{
+  font-size: 40px;
+  
+}
+
+.imagem-perfil img{
+  width: 250px;
+  border-radius: 100%;
+  padding-bottom: 15px;
+}
+
+.col-md-6{
+  float: left;
 }

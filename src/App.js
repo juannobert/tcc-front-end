@@ -3,16 +3,41 @@ import Home from './Components/Home';
 import Auth from './Components/auth/Auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import './Assets/adminlte.min.css';
 import ResetPassword from './Components/forgot-password/ResetPassword';
+import Sidebar from './Components/nav/Sidebar';
+import Menu from './Components/nav/Menu';
+import Relatorios from './Components/Relatorios';
+import React from 'react';
+import { UserStorage } from './UserContext';
+import ProtectedRoute from './Components/Helper/ProtectedRoute';
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/auth/*" element={<Auth />} />
-        <Route path="reset-password/:id" element={<ResetPassword />} />
-      </Routes>
+      <UserStorage>
+        <Routes>
+          <Route path="/auth/*" element={<Auth />} />
+          <Route path="reset-password/:id" element={<ResetPassword />} />
+
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="/relatorios"
+            element={
+              <ProtectedRoute>
+                <Relatorios />
+              </ProtectedRoute>
+            }
+          ></Route>
+        </Routes>
+      </UserStorage>
     </BrowserRouter>
   );
 }
