@@ -1,5 +1,7 @@
 import React from 'react';
 import { BsFillTrashFill, BsNewspaper } from 'react-icons/bs/';
+import ReactLoading from 'react-loading';
+
 import useFetch from '../Hooks/useFetch';
 import { EMPLOYEE_GET } from '../api';
 
@@ -16,7 +18,12 @@ function Relatorios() {
   }, [accessToken, request, userId]);
 
   if (error) return '<div>Error</div>';
-  if (loading) return '<div>Carregando</div>';
+  if (loading)
+    return (
+      <div className="content d-flex align-items-center justify-content-center">
+        <ReactLoading type="spin" color="#0000FF" height={100} width={50} />
+      </div>
+    );
   return (
     <div class="content">
       <div class="titulo-secao">

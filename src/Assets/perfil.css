@@ -1,0 +1,64 @@
+
+.container{
+    margin-top: 20px;
+    background-color: lightgray;
+}
+
+.mains{
+    padding: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card-title{
+    float: left;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
+    color: white;
+}
+.topbar{
+    background-color: teal;
+    overflow: hidden;
+}
+
+.topbar a{
+    float: right;
+    color: whitesmoke;
+    text-align: center;
+    padding: 20px 26px;
+    text-decoration: none;
+    font-size: 26px;
+}
+
+.sidebars{
+    background-color: #333;
+    color: white;
+    height: 100%;
+}
+
+.sidebars a{
+    margin-left: 10px;
+    display: block;
+    color: white;
+    padding-bottom: 10px;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.contents{
+    background-color: whitesmoke;
+}
+
+.card-body img{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin:0 8px;
+}
+

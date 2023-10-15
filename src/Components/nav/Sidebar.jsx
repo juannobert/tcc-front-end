@@ -18,9 +18,9 @@ function Sidebar() {
       <Link to="/relatorios">
         <BsNewspaper /> Relatórios
       </Link>
-      <a href="perfil.html">
+      <Link to="/perfil">
         <BsFillPersonFill /> Perfil{' '}
-      </a>
+      </Link>
       <br />
       <div className="separador"></div>
     </div>

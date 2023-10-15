@@ -3,11 +3,10 @@ import Home from './Components/Home';
 import Auth from './Components/auth/Auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import './Assets/adminlte.min.css';
+//import './Assets/adminlte.min.css';
 import ResetPassword from './Components/forgot-password/ResetPassword';
-import Sidebar from './Components/nav/Sidebar';
-import Menu from './Components/nav/Menu';
 import Relatorios from './Components/Relatorios';
+import Perfil from './Components/Perfil';
 import React from 'react';
 import { UserStorage } from './UserContext';
 import ProtectedRoute from './Components/Helper/ProtectedRoute';
@@ -33,6 +32,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <Relatorios />
+              </ProtectedRoute>
+            }
+          ></Route>
+
+          <Route
+            path="/perfil"
+            element={
+              <ProtectedRoute>
+                <Perfil />
               </ProtectedRoute>
             }
           ></Route>

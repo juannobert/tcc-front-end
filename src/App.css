@@ -14,7 +14,9 @@ a{
   display: flex;
   justify-content: space-between;
 }
-
+.card-header{
+  background-color: #ff444c;
+}
 .logo{
   margin-top: 8px;
 }

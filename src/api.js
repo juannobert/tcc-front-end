@@ -52,7 +52,7 @@ export function EMPLOYEE_GET(id, token) {
 
 export function USER_POST(body) {
   return {
-    url: API_URL + '/api/user',
+    url: API_URL + '/empregadores',
     options: {
       method: 'POST',
       headers: {

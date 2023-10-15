@@ -13,12 +13,12 @@ export const UserStorage = ({ children }) => {
 
   const userLogout = React.useCallback(
     async function () {
-      console.log('caiu isso');
       setData(null);
       setError(null);
       setLoading(false);
       setLogin(false);
-      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('accessToken');
+      window.localStorage.removeItem('userId');
       navigate('/auth/login');
     },
     [navigate],
@@ -66,7 +66,6 @@ export const UserStorage = ({ children }) => {
           if (!response.ok) throw new Error('Token inválido');
           await getUser(userId, accessToken);
         } catch (err) {
-          console.log('deu isso');
           userLogout();
         } finally {
           setLoading(false);

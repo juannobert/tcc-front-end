@@ -1,13 +1,19 @@
 import React from 'react';
+import { mask } from '../Components/Helper/Mask';
 const types = {
   email: {
     regex:
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     message: 'Preencha um email válido',
   },
+  cpfCnpj: {
+    regex:
+      /(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/,
+    message: 'CPF ou CNPJ inválido',
+  },
 };
-const useForm = (type) => {
-  const [value, setValue] = React.useState('');
+const useForm = (type, value1) => {
+  const [value, setValue] = React.useState(value1 != null ? value1 : '');
   const [error, setError] = React.useState(null);
 
   function validate(value) {
@@ -26,7 +32,8 @@ const useForm = (type) => {
 
   function onChange({ target }) {
     if (error) validate(target.value);
-    setValue(target.value);
+    if (type === 'cpfCnpj') setValue(mask(target.value));
+    else setValue(target.value);
   }
 
   return {

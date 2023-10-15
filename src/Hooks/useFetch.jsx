@@ -13,13 +13,19 @@ const useFetch = () => {
       setLoading(true);
       response = await fetch(url, options);
       json = await response.json();
-      if (response.ok === false) throw new Error(json.message);
+      if (response.ok === false) throw new Error(json);
     } catch (err) {
+      console.log(json);
+      setError(
+        json?.senha ||
+          json?.email ||
+          json?.endereco ||
+          json?.nome ||
+          json?.cpfCnpj,
+      );
       json = null;
-      setError(err.message);
     } finally {
       setData(json);
-      console.log(json);
       setLoading(false);
       return { response, json };
     }
@@ -30,6 +36,7 @@ const useFetch = () => {
     loading,
     error,
     request,
+    setError,
   };
 };
 
