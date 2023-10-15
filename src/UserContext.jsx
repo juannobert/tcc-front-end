@@ -1,5 +1,5 @@
 import React from 'react';
-import { TOKEN_POST, USER_GET, TOKEN_VALIDATE_POST } from './api';
+import { TOKEN_POST, USER_GET, TOKEN_VALIDATE_POST, USER_UPDATE } from './api';
 import { useNavigate } from 'react-router-dom';
 
 export const UserContext = React.createContext();
@@ -31,6 +31,36 @@ export const UserStorage = ({ children }) => {
     setData(json);
     setLogin(true);
   }
+  async function userUpdate(endereco, nome, email, cpfCnpj) {
+    let json;
+    try {
+      setError(null);
+      setLoading(true);
+      const accessToken = window.localStorage.getItem('accessToken');
+      const { url, options } = USER_UPDATE(accessToken, data['id'], {
+        email,
+        nome,
+        cpfCnpj,
+        endereco,
+      });
+      const response = await fetch(url, options);
+      json = await response.json();
+      if (response.ok === false) throw new Error(json);
+      console.log(response.status);
+      setData(json);
+    } catch (err) {
+      console.log('deu merda');
+      setError(
+        json?.senha ||
+          json?.email ||
+          json?.endereco ||
+          json?.nome ||
+          json?.cpfCnpj,
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function userLogin(email, senha) {
     try {
@@ -42,12 +72,31 @@ export const UserStorage = ({ children }) => {
       const { accessToken, userId } = await tokenRes.json();
       window.localStorage.setItem('accessToken', accessToken);
       window.localStorage.setItem('userId', userId);
-      console.log(accessToken);
       await getUser(userId, accessToken);
       navigate('/');
     } catch (err) {
       setError(err.message);
       setLogin(false);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function verifyLogin(email, senha, isGet) {
+    try {
+      setError(null);
+      setLoading(true);
+      const { url, options } = TOKEN_POST({ email, senha });
+      const tokenRes = await fetch(url, options);
+      if (!tokenRes.ok) throw new Error(`Login inválido`);
+      const { accessToken, userId } = await tokenRes.json();
+      window.localStorage.setItem('accessToken', accessToken);
+      window.localStorage.setItem('userId', userId);
+      if (isGet === true) await getUser(userId, accessToken);
+      navigate('/perfil');
+      return true;
+    } catch (err) {
+      setError('Login inválido');
     } finally {
       setLoading(false);
     }
@@ -79,7 +128,16 @@ export const UserStorage = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ userLogin, data, error, loading, login, userLogout }}
+      value={{
+        userLogin,
+        data,
+        error,
+        loading,
+        login,
+        userLogout,
+        userUpdate,
+        verifyLogin,
+      }}
     >
       {children}
     </UserContext.Provider>

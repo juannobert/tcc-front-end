@@ -15,7 +15,6 @@ const useFetch = () => {
       json = await response.json();
       if (response.ok === false) throw new Error(json);
     } catch (err) {
-      console.log(json);
       setError(
         json?.senha ||
           json?.email ||

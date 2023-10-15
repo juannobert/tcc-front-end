@@ -40,9 +40,9 @@ function Register() {
         cpfCnpj: cpfCnpj.value,
       });
 
-      await request(url, options);
+      const { response } = await request(url, options);
 
-      if (!error) {
+      if (response.ok === true) {
         navigate('/auth/login?register=true');
       }
     }

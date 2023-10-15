@@ -1,5 +1,5 @@
-export const API_URL = 'http://localhost:8080';
-
+export const API_URL = 'https://ponto-go-71757936441c.herokuapp.com';
+//export const API_URL = 'http://localhost:8080';
 export function TOKEN_POST(body) {
   return {
     url: API_URL + '/auth/autenticar',
@@ -57,6 +57,20 @@ export function USER_POST(body) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function USER_UPDATE(token, id, body) {
+  return {
+    url: API_URL + '/empregadores/' + id,
+    options: {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
       },
       body: JSON.stringify(body),
     },
