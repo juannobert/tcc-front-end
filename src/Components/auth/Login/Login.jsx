@@ -28,9 +28,9 @@ function Login() {
     <div className="col">
       <div className="container bg-white container-form">
         <div>
-          {parametros.get('register') ? (
-            <div class="alert alert-success" role="alert">
-              Registro efetuado com sucesso
+          {parametros.get('msg') ? (
+            <div className="alert alert-success" role="alert">
+              {parametros.get('msg')}
             </div>
           ) : (
             ''
@@ -46,13 +46,15 @@ function Login() {
           <Input placeholder="Email" type="text" name="email" {...email}>
             <AiOutlineUser />
           </Input>
-          <Input placeholder="Senha" type="text" name="password" {...senha}>
+          <Input placeholder="Senha" type="password" name="password" {...senha}>
             <AiFillUnlock />
           </Input>
           <div className="row text-end">
-            <a className="primary-color" href="/">
-              Esqueceu a senha?
-            </a>
+            <div className="row text-end">
+              <Link className="primary-color" to={'/auth/password'}>
+                Esqueceu a senha?
+              </Link>
+            </div>
           </div>
           {loading ? (
             <Button disabled>Carregando</Button>

@@ -6,6 +6,7 @@ import { ReactComponent as Logo } from '../../Assets/Illustration.svg';
 import Register from './Login/Register';
 import { UserContext } from '../../UserContext';
 import ReactLoading from 'react-loading';
+import SendEmail from './Login/SendEmail';
 
 function Auth() {
   const { login, loading } = React.useContext(UserContext);
@@ -26,6 +27,7 @@ function Auth() {
         <Routes>
           <Route path="login" element={<Login />}></Route>
           <Route path="register" element={<Register />}></Route>
+          <Route path="password" element={<SendEmail />}></Route>
         </Routes>
       </div>
     </div>

@@ -76,3 +76,29 @@ export function USER_UPDATE(token, id, body) {
     },
   };
 }
+
+export function RESET_PASWORD(body) {
+  return {
+    url: API_URL + '/public/change-password',
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function SEND_EMAIL(body) {
+  return {
+    url: API_URL + '/public/forgot-password',
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

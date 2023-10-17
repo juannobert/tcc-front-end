@@ -136,14 +136,13 @@ function Perfil() {
           </form>
         </div>
       </div>
-
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
+      <div className="col-md-6">
+        <div className="card">
+          <div className="card-header">
             <h3>Dados do Admnistrador</h3>
           </div>
-          <div class="card-body p-0">
-            <div class="imagem-perfil">
+          <div className="card-body p-0">
+            <div className="imagem-perfil">
               <img
                 src="https://img.freepik.com/vetores-premium/perfil-de-avatar-de-homem-no-icone-redondo_24640-14044.jpg"
                 alt=""

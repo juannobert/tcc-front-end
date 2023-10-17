@@ -3,50 +3,84 @@ import { Link, useParams } from 'react-router-dom';
 import Button from '../Forms/Button';
 import { AiOutlineUser } from 'react-icons/ai';
 import Input from '../Forms/Input';
+import useForm from '../../Hooks/useForm';
+import { RESET_PASWORD } from '../../api';
+import useFetch from '../../Hooks/useFetch';
+import Error from '../Helper/Error';
 
 function ResetPassword() {
-  // const params = useParams();
+  const params = useParams();
+  const { loading, request } = useFetch();
+
+  const senha = useForm(true);
+  const confirmarSenha = useForm(true);
+
+  const [error, setError] = React.useState(null);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    if (senha.value === confirmarSenha.value) {
+      setError(null);
+      const { url, options } = RESET_PASWORD({
+        senha: senha.value,
+        token: params.id,
+      });
+
+      const { json } = await request(url, options);
+      console.log(json);
+    } else {
+      setError('Senhas não conferem');
+    }
+  }
+
   return (
-    <div class="container d-flex flex-column">
+    <div className="container d-flex flex-column">
       <div
-        class="row align-items-center justify-content-center
+        className="row align-items-center justify-content-center
         min-vh-100 g-0"
       >
-        <div class="col-12 col-md-8 col-lg-4 border-top border-3 border-danger">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <div class="mb-4">
+        <div className="col-12 col-md-8 col-lg-4 border-top border-3 border-danger">
+          <div className="card shadow-sm">
+            <div className="card-body">
+              <div className="mb-4">
                 <h5>Esqueceu a senha?</h5>
-                <p class="mb-2">Altere sua senha na aplicação</p>
+                <p className="mb-2">Altere sua senha na aplicação</p>
               </div>
-              <form>
-                <div class="mb-3">
-                  <label for="email" class="form-label">
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">
                     Senha
                   </label>
                   <Input
                     type="password"
                     id="senha1"
-                    class="form-control"
+                    classNameName="form-control"
                     name="email"
+                    {...senha}
                   >
                     <AiOutlineUser />
                   </Input>
-                  <label for="email" class="form-label">
+                  <label htmlFor="email" className="form-label">
                     Confirmar senha:
                   </label>
                   <Input
                     type="password"
                     id="senha2"
-                    class="form-control"
+                    className="form-control"
                     name="email"
+                    {...confirmarSenha}
                   >
                     <AiOutlineUser />
                   </Input>
                 </div>
-                <div class="mb-3 d-grid">
-                  <Button>Alterar senha</Button>
+                <div className="mb-3 d-grid">
+                  {loading ? (
+                    <Button>Carregando...</Button>
+                  ) : (
+                    <Button>Alterar senha</Button>
+                  )}
                 </div>
+                <Error error={error}></Error>
                 <span>
                   Não tem uma conta?
                   <Link to="/auth/register">Criar uma conta </Link>

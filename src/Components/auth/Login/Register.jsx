@@ -43,7 +43,7 @@ function Register() {
       const { response } = await request(url, options);
 
       if (response.ok === true) {
-        navigate('/auth/login?register=true');
+        navigate('/auth/login?msg=Regitro efetuado com sucesso');
       }
     }
   }
@@ -71,7 +71,7 @@ function Register() {
           <Input placeholder="Email" type="text" name="email" {...email}>
             <AiOutlineUser />
           </Input>
-          <Input placeholder="Senha" type="text" name="password" {...senha}>
+          <Input placeholder="Senha" type="password" name="password" {...senha}>
             <AiFillUnlock />
           </Input>
           <Input placeholder="CPF/CNPJ" type="text" name="cpfCnpj" {...cpfCnpj}>
