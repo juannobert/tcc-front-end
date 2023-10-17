@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Button from '../Forms/Button';
 import { AiOutlineUser } from 'react-icons/ai';
 import Input from '../Forms/Input';
@@ -11,6 +11,7 @@ import Error from '../Helper/Error';
 function ResetPassword() {
   const params = useParams();
   const { loading, request } = useFetch();
+  const navigate = useNavigate();
 
   const senha = useForm(true);
   const confirmarSenha = useForm(true);
@@ -26,8 +27,8 @@ function ResetPassword() {
         token: params.id,
       });
 
-      const { json } = await request(url, options);
-      console.log(json);
+      await request(url, options);
+      navigate('/auth/login?msg=Senha alterada com sucesso');
     } else {
       setError('Senhas não conferem');
     }
