@@ -19,7 +19,7 @@ function Menu() {
           <BiExit />
         </button>
         <img
-          src="https://www.arita.com.br/wp-content/uploads/2020/08/pessoa-expansiva-principais-caracteristicas-desta-personalidade.jpg"
+          src="https://cdn-icons-png.flaticon.com/512/4645/4645949.png"
           alt="img"
         />
       </div>

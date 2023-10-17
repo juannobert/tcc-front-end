@@ -65,7 +65,7 @@ function Perfil() {
 
       <br />
 
-      <div class="col-md-6">
+      <div class="formperfil">
         <div class="card card-primary">
           <div class="card-header" style={{ backgroundColor: '#ff444c' }}>
             <h3 class="card-title">Editar Perfil</h3>
@@ -134,29 +134,6 @@ function Perfil() {
               </div>
             </div>
           </form>
-        </div>
-      </div>
-      <div className="col-md-6">
-        <div className="card">
-          <div className="card-header">
-            <h3>Dados do Admnistrador</h3>
-          </div>
-          <div className="card-body p-0">
-            <div className="imagem-perfil">
-              <img
-                src="https://img.freepik.com/vetores-premium/perfil-de-avatar-de-homem-no-icone-redondo_24640-14044.jpg"
-                alt=""
-              />
-              <h3> {data['nome']} </h3>
-              <p> {data['email']} </p>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
-          </div>
         </div>
       </div>
     </div>
