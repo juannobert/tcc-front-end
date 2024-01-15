@@ -1,11 +1,19 @@
 import React from 'react';
 import { BsFillTrashFill, BsNewspaper } from 'react-icons/bs/';
+import { FaDownload } from 'react-icons/fa';
+
+import { API_URL } from '../api';
+
 import ReactLoading from 'react-loading';
 
 import useFetch from '../Hooks/useFetch';
 import { EMPLOYEE_GET } from '../api';
+import { UserContext } from '../UserContext';
+import { Link } from 'react-router-dom';
 
 function Relatorios() {
+  const context = React.useContext(UserContext);
+
   const { loading, request, error, data } = useFetch();
   const accessToken = window.localStorage.getItem('accessToken');
   const userId = window.localStorage.getItem('userId');
@@ -28,6 +36,7 @@ function Relatorios() {
     <div class="content">
       <div class="titulo-secao">
         <h2>Relatórios</h2>
+
         <br />
         <div class="separador"></div>
         <br />
@@ -39,8 +48,17 @@ function Relatorios() {
       <br />
 
       <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between">
           <h3 class="card-title">Funcionários</h3>
+          <div>
+            <a
+              target="_blank"
+              href={API_URL + '/relatorios/funcionario/' + context.data['id']}
+              rel="noreferrer"
+            >
+              <FaDownload color="white" />
+            </a>
+          </div>
         </div>
         <div class="card-body p-0">
           <table class="table table-striped">
@@ -65,7 +83,12 @@ function Relatorios() {
                   <td>
                     <div class="btn-group">
                       <a href="/" class="btn btn-success">
-                        <BsNewspaper />
+                        <Link
+                          to={'/relatorios/' + el['id']}
+                          style={{ color: 'white' }}
+                        >
+                          <BsNewspaper />
+                        </Link>
                       </a>
                       <a href="/" class="btn btn-danger">
                         <BsFillTrashFill />

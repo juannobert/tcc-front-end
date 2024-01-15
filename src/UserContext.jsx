@@ -49,7 +49,6 @@ export const UserStorage = ({ children }) => {
       console.log(response.status);
       setData(json);
     } catch (err) {
-      console.log('deu merda');
       setError(
         json?.senha ||
           json?.email ||
@@ -77,6 +76,7 @@ export const UserStorage = ({ children }) => {
     } catch (err) {
       setError(err.message);
       setLogin(false);
+      navigate('/auth/login');
     } finally {
       setLoading(false);
     }

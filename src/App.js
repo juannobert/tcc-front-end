@@ -10,6 +10,7 @@ import Perfil from './Components/Perfil';
 import React from 'react';
 import { UserStorage } from './UserContext';
 import ProtectedRoute from './Components/Helper/ProtectedRoute';
+import Funcionario from './Funcionario';
 
 function App() {
   return (
@@ -32,6 +33,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <Relatorios />
+              </ProtectedRoute>
+            }
+          ></Route>
+
+          <Route
+            path="/relatorios/:id"
+            element={
+              <ProtectedRoute>
+                <Funcionario />
               </ProtectedRoute>
             }
           ></Route>

@@ -102,3 +102,15 @@ export function SEND_EMAIL(body) {
     },
   };
 }
+
+export function EMPLOYEE_LIST(id, token) {
+  return {
+    url: API_URL + '/registros/listar/' + id,
+    options: {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    },
+  };
+}
